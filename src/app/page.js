@@ -1,11 +1,14 @@
 import React from 'react'
-import Header from './components/Header/page'
+import Hero from './components/Hero/page'
+import Search from './components/search/page'
 
 const Home = () => {
+
+
   return (
-    <div>
-      <h1>Home</h1>
-      <Header/>
+    <div className='px-[60px]'>
+      <Search/>
+      <Hero/>
     </div>
   )
 }
