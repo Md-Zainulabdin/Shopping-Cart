@@ -15,7 +15,7 @@ const CartPage = () => {
 
  if (cart.length !== 0) {
     cart.forEach(item => {
-      price += Number(item.Price)
+      price += Number(item.Price * item.qty)
     })
  }
 

@@ -1,8 +1,13 @@
 "use client";
+import { useCart } from "@/context/Context";
 import React, { useState } from "react";
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const {
+     prodState : {searchQuery} ,
+     prodDispatch,
+  } = useCart();
+
 
   return (
     <div className="w-full border my-[40px] rounded-lg overflow-hidden">
@@ -10,8 +15,12 @@ const Search = () => {
         type="search"
         name="search"
         id="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) =>
+          prodDispatch({
+            type: "FILTER_BY_SEARCH",
+            payload: e.target.value,
+          })
+        }
         placeholder="Search Product"
         className="w-full p-3  outline-none  text-[#888]"
       />
