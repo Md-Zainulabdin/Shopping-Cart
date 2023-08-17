@@ -1,6 +1,7 @@
 "use client";
 import { useCart } from "@/context/Context";
 import { AiFillDelete } from "react-icons/ai";
+import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
@@ -10,9 +11,20 @@ const CartPage = () => {
     dispatch,
   } = useCart();
 
+  let price = 0
+
+ if (cart.length !== 0) {
+    cart.forEach(item => {
+      price += Number(item.Price)
+    })
+ }
+
+ console.log(price);
+
+
   return (
     <div className="Cart w-full px-[60px]">
-      <div className="title py-6 flex flex-col gap-3">
+      <div className="title py-8 flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-[#333]">
           Your Shopping Cart
         </h1>
@@ -24,7 +36,7 @@ const CartPage = () => {
       <div className="cartProducts mt-4 w-full h-[450px] border overflow-y-scroll">
         {cart.length !== 0 ? (
           cart.map((prod) => (
-            <div className="w-full h-[150px] flex items-center justify-between border overflow-hidden">
+            <div className="w-full h-[150px] flex items-center justify-between border overflow-hidden" key={prod.Id}>
               <div className="imgBox w-[200px] flex items-center justify-center">
                 <Image
                   src={prod.Img}
@@ -66,6 +78,11 @@ const CartPage = () => {
             </h1>
           </div>
         )}
+      </div>
+
+      <div className="total-amount w-full py-6 text-right">
+          <h1 className="text-xl font-medium mb-6">Total Amount : {price} $</h1>
+          <Link href='/' className=" border-2 rounded-md border-blue-400 px-5 py-3">back to shopping</Link>
       </div>
     </div>
   );
