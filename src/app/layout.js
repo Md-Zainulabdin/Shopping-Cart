@@ -1,9 +1,9 @@
+'use client'
 import { ContextProvider } from '@/context/Context'
 import Header from './components/Header/page'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import AuthProvider from './components/AuthProvider/page'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Shopping Cart',
@@ -12,13 +12,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ContextProvider>
-          <Header />
-          {children}
-        </ContextProvider>
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <head>
+          <title>Shopping Cart</title>
+        </head>
+        <body>
+          <ContextProvider>
+            <Header />
+            {children}
+          </ContextProvider>
+        </body>
+      </html>
+    </AuthProvider>
   )
 }

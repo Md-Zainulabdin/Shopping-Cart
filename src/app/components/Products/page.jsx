@@ -5,11 +5,22 @@ import { useEffect, useState } from "react";
 
 const Products = () => {
   const {
+    prodState: { searchQuery },
     state: { products, cart },
     dispatch,
     filter,
   } = useCart();
   const [product, setProduct] = useState(products);
+
+  useEffect(() => {
+    const updateBySearch = products.filter((prod) => {
+      if (prod.Title.toLowerCase().includes(searchQuery)) {
+        return prod;
+      }
+    });
+
+    setProduct(updateBySearch);
+  }, [searchQuery]);
 
   useEffect(() => {
     const updateData = products.filter((item) => item.Cat === filter);
@@ -21,8 +32,6 @@ const Products = () => {
 
     setProduct(updateData);
   }, [filter]);
-
-  console.log(cart);
 
   return (
     <div className="w-full flex flex-wrap gap-4 justify-center">
@@ -53,21 +62,27 @@ const Products = () => {
 
             <div className="button w-full mt-3">
               {cart.some((p) => p.id === prod.id) ? (
-                <button className="w-full border py-2 bg-red-500 text-white font-medium" onClick={() => {
-                  dispatch({
-                    type: "REMOVE_FROM_CART",
-                    payload: prod,
-                  })
-                }}>
+                <button
+                  className="w-full border py-2 bg-red-500 text-white font-medium"
+                  onClick={() => {
+                    dispatch({
+                      type: "REMOVE_FROM_CART",
+                      payload: prod,
+                    });
+                  }}
+                >
                   Remove From Cart
                 </button>
               ) : (
-                <button className="w-full border py-2 bg-blue-400 text-white font-medium" onClick={() => {
-                  dispatch({
-                    type: "ADD_TO_CART",
-                    payload: prod,
-                  })
-                }}>
+                <button
+                  className="w-full border py-2 bg-blue-400 text-white font-medium"
+                  onClick={() => {
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: prod,
+                    });
+                  }}
+                >
                   Add To Cart
                 </button>
               )}

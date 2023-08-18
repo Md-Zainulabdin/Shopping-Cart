@@ -1,10 +1,9 @@
 "use client";
 import Form from "@/app/components/Form/page";
+import { redirect } from "next/navigation";
 import React from "react";
-import { useRouter } from "next/navigation";
 
 const signUpPage = () => {
-  const router = useRouter();
   const onSubmit = async (username, email, password) => {
     const res = await fetch("/api/users", {
       method: "POST",
@@ -21,7 +20,7 @@ const signUpPage = () => {
     if (res.ok) {
       alert("User Created");
       console.log(res);
-      router.replace("/login");
+      redirect('/');
     }
   };
 
