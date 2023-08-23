@@ -23,7 +23,7 @@ const CartPage = () => {
 
 
   return (
-    <div className="Cart w-full px-[60px]">
+    <div className="Cart w-full px-[30px] md:px-[60px]">
       <div className="title py-8 flex flex-col gap-3">
         <h1 className="text-3xl font-semibold text-[#333]">
           Your Shopping Cart
@@ -73,7 +73,7 @@ const CartPage = () => {
           ))
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <h1 className="text-2xl text-black">
+            <h1 className="text-xl md:text-2xl text-black">
               You dont have any item in cart
             </h1>
           </div>

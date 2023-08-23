@@ -13,7 +13,7 @@ const Form = ({ signIn, onFormSubmit }) => {
   };
 
   return (
-    <div className="w-[33%] px-3 py-4 border">
+    <div className="w-[80%] sm:w-[60%] md:w-[50%] lg:w-[33%] px-6 py-6 md:px-4 md:py-4  border">
       <div className="title border-b pb-5 pt-2">
         <h1 className="text-3xl font-medium text-[#222]">
           {signIn ? "Sign In " : "Sign Up"}

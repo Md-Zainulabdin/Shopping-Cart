@@ -7,7 +7,7 @@ const Filters = () => {
 
   return (
     <div className="filters mb-6">
-      <div className="filter-category flex flex-wrap items-center justify-around">
+      <div className="filter-category flex flex-wrap items-center justify-center gap-4 md:gap-8">
         <div
           className="border px-6 py-2 cursor-pointer text-[#222] rounded-full"
           onClick={() => setFilter("All")}

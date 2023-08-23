@@ -34,7 +34,7 @@ const Products = () => {
   }, [filter]);
 
   return (
-    <div className="w-full flex flex-wrap gap-4 justify-center">
+    <div className="w-full flex flex-wrap gap-6 justify-center">
       {product.map((prod) => (
         <div
           key={prod.id}

@@ -7,7 +7,7 @@ const Home = () => {
 
 
   return (
-    <div className='px-[60px]'>
+    <div className='px-[30px] md:px-[45px] lg:px-[60px]'>
       <Search/>
       <Filters/>
       <Hero/>
